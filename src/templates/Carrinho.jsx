@@ -5,8 +5,8 @@ export default function Carrinho(props) {
             alignItems: 'center',
             justifyContent: "space-between",
             backgroundColor: 'rgb(255, 60, 60)',
-            width: '250px',
-            height: '40px',
+            width: '255px',
+            height: '45px',
             border: '0px',
             margin: '0px',
             padding: '0px',
@@ -22,7 +22,9 @@ export default function Carrinho(props) {
                     backgroundColor: "inherit",
                     border: '0px',
                 }
-                } type='button'>
+                } type='button' onClick={()=>{
+                    props.mostrarLista(true);
+                }}>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="32"
                         height="32"
@@ -47,9 +49,10 @@ export default function Carrinho(props) {
                     padding: '0px',
                 }}>meu carrinho</p>
                 <p style={{
+                    color:'white',
                     margin: '0px',
                     padding: '0px',
-                }}>{props.qtdCarrinho || 0} item</p>
+                }}>{props.qtdCarrinho || 0} Item(s)</p>
             </div>
             <div id='segurança' style={{
                 display: 'flex',
@@ -77,7 +80,7 @@ export default function Carrinho(props) {
                     margin: '0px',
                     padding: '0px',
                     border: '0px',
-                    height: '20px',
+                    height: '25px',
                     width: '70px',
                     borderRadius: '0 0 10px 0'
                 }}>seguro</p>
