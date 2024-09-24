@@ -13,7 +13,7 @@ function App() {
   function restaurarCarrinho() {
     const carrinho = localStorage.getItem('carrinho');
     if (carrinho !== null) {
-      setListaProdutos(JSON.parse(carrinho))
+      setListaProdutos(JSON.parse(carrinho));
     }
   }
 
@@ -30,19 +30,33 @@ function App() {
     return (
       <div className="App">
         <Cabecalho />
-        <BarraBusca qtdCarrinho={listaProdutos.length} mostraLista={setMostrarLista} />
-        <ListaProdutosCarrinho listaProdutosCarrinho={listaProdutos} mostrarLista={setMostrarLista} />
+
+        <BarraBusca
+          qtdCarrinho={listaProdutos.length}
+          mostraLista={setMostrarLista}
+        />
+
+        <ListaProdutosCarrinho
+          listaProdutosCarrinho={listaProdutos}
+          setListaProdutosCarrinho={setListaProdutos}  // Passando corretamente o setListaProdutos
+          mostrarLista={setMostrarLista}
+        />
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div className="App">
         <Cabecalho />
-        <BarraBusca qtdCarrinho={listaProdutos.length} mostrarLista={setMostrarLista} />
-        <GradeProdutos listaProdutos={produtos}
+        <BarraBusca
+          qtdCarrinho={listaProdutos.length}
+          mostrarLista={setMostrarLista}
+        />
+
+        <GradeProdutos
+          listaProdutos={produtos}
           setListaProdutos={setListaProdutos}
-          listaProdutosCarrinho={listaProdutos} />
+          listaProdutosCarrinho={listaProdutos}
+        />
       </div>
     );
   }

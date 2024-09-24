@@ -2,25 +2,35 @@ import { Button, Table, Alert, Container } from 'react-bootstrap'
 
 export default function ListaProdutosCarrinho(props) {
 
-    function addProduto(produto){
-        if(produto.quantidade > 1){
-
-        }
+    function addProduto(produto) {
+        const novaListaCarrinho = props.listaProdutosCarrinho.map(item => {
+            if (item.id === produto.id) {
+                return { ...item, quantidade: item.quantidade + 1 };
+            }
+            return item;
+        })
+        props.setListaProdutosCarrinho(novaListaCarrinho);
+        localStorage.setItem('carrinho', JSON.stringify(novaListaCarrinho));
     }
 
-    function lessProduto(produto){
-        if(produto.quantidade > 1){
-
-        }
+    function lessProduto(produto) {
+        const novaListaCarrinho = props.listaProdutosCarrinho.map(item => {
+            if (item.id === produto.id && item.quantidade > 1) {
+                return { ...item, quantidade: item.quantidade - 1 };
+            }
+            return item;
+        })
+        props.setListaProdutosCarrinho(novaListaCarrinho);
+        localStorage.setItem('carrinho', JSON.stringify(novaListaCarrinho));
     }
 
-    function excluirProduto(produto){
-        if(window.confirm("Deseja realmente excluir o produto com ID: " + produto.id)){
-            props.setListaProdutosCarrinho(props.listaProdutosCarrinho.filter(
-                (item) => {
-                    return item.id !== produto.id
-                }
-            ))
+    function excluirProduto(produto) {
+        if (window.confirm("Deseja realmente excluir o produto com ID: " + produto.id)) {
+            const novaListaCarrinho = props.listaProdutosCarrinho.filter(
+                item => item.id !== produto.id
+            );
+            props.setListaProdutosCarrinho(novaListaCarrinho);
+            localStorage.setItem('carrinho',JSON.stringify(novaListaCarrinho));
         }
     }
 
@@ -49,9 +59,9 @@ export default function ListaProdutosCarrinho(props) {
                                 <td>{produto.preco}</td>
                                 <td>{produto.quantidade * produto.preco}</td>
                                 <td>
-                                    <Button variant='outline-danger' className='mb-1' style={{ borderColor: 'white' }} onClick={() => { excluirProduto(produto) }}>Excluir</Button>
-
-                                    <Button variant='outline-success' style={{ borderColor: 'white' }} onClick={() => { addProduto(produto) }}>+
+                                    <Button variant='outline-danger' className='mb-1' style={{ borderColor: 'white' }} onClick={() => { excluirProduto(produto) }}>Excluir
+                                        
+                                    </Button> <Button variant='outline-success' style={{ borderColor: 'white' }} onClick={() => { addProduto(produto) }}>+
 
                                     </Button> <Button variant='outline-warning' style={{ borderColor: 'white' }} onClick={() => { lessProduto(produto) }}>-</Button>
                                 </td>
