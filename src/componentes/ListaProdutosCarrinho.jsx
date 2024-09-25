@@ -5,7 +5,7 @@ export default function ListaProdutosCarrinho(props) {
     function addProduto(produto) {
         const novaListaCarrinho = props.listaProdutosCarrinho.map(item => {
             if (item.id === produto.id) {
-                return { ...item, quantidade: item.quantidade + 1 };
+                return { ...item, quantidade: Number(item.quantidade) + 1 };
             }
             return item;
         })
@@ -16,7 +16,7 @@ export default function ListaProdutosCarrinho(props) {
     function lessProduto(produto) {
         const novaListaCarrinho = props.listaProdutosCarrinho.map(item => {
             if (item.id === produto.id && item.quantidade > 1) {
-                return { ...item, quantidade: item.quantidade - 1 };
+                return { ...item, quantidade: Number(item.quantidade) - 1 };
             }
             return item;
         })
