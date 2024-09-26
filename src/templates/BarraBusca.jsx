@@ -39,7 +39,7 @@ export default function BarraBusca(props) {
                         outline: 'none',
                     }}
                     type="text" 
-                    placeholder="o que você procura?" 
+                    placeholder=" O que você procura?" 
                     />
                 </div>
                 <div 

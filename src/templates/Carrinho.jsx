@@ -47,7 +47,7 @@ export default function Carrinho(props) {
                     color: 'white',
                     margin: '0px',
                     padding: '0px',
-                }}>meu carrinho</p>
+                }}>Meu carrinho</p>
                 <p style={{
                     color:'white',
                     margin: '0px',
@@ -66,13 +66,13 @@ export default function Carrinho(props) {
                 boxSizing: 'border-box',
             }}>
                 <p style={{
-                    backgroundColor: 'rgb(0,157,0)',
+                    backgroundColor: 'rgb(0,120,0)',
                     boxSizing: 'border-box',
                     margin: '0px',
                     padding: '0px',
                     width: '70px',
                     height: '20px',
-                    borderRadius: '0 10px 0 0'
+                    borderRadius: '0 10px 0 0',
                 }}>100%</p>
                 <p style={{
                     backgroundColor: 'rgb(0,90,0)',
@@ -83,7 +83,7 @@ export default function Carrinho(props) {
                     height: '25px',
                     width: '70px',
                     borderRadius: '0 0 10px 0'
-                }}>seguro</p>
+                }}>Seguro</p>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { Button, Table, Alert, Container } from 'react-bootstrap'
+import { Button, Table, Alert, Container, Row, Col } from 'react-bootstrap'
 
 export default function ListaProdutosCarrinho(props) {
 
@@ -30,7 +30,7 @@ export default function ListaProdutosCarrinho(props) {
                 item => item.id !== produto.id
             );
             props.setListaProdutosCarrinho(novaListaCarrinho);
-            localStorage.setItem('carrinho',JSON.stringify(novaListaCarrinho));
+            localStorage.setItem('carrinho', JSON.stringify(novaListaCarrinho));
         }
     }
 
@@ -59,11 +59,31 @@ export default function ListaProdutosCarrinho(props) {
                                 <td>{produto.preco}</td>
                                 <td>{produto.quantidade * produto.preco}</td>
                                 <td>
-                                    <Button variant='outline-danger' className='mb-1' style={{ borderColor: 'white' }} onClick={() => { excluirProduto(produto) }}>Excluir
-                                        
-                                    </Button> <Button variant='outline-success' style={{ borderColor: 'white' }} onClick={() => { addProduto(produto) }}>+
-
-                                    </Button> <Button variant='outline-warning' style={{ borderColor: 'white' }} onClick={() => { lessProduto(produto) }}>-</Button>
+                                    <Row>
+                                        <Col xs={12} className="mb-2">
+                                            <Button variant='outline-danger'
+                                                className='mb-1'
+                                                style={{ borderColor: 'white', width: '100%' }}
+                                                onClick={() => { excluirProduto(produto); }}
+                                            >Excluir</Button>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col xs={6}>
+                                            <Button
+                                                variant='outline-success'
+                                                style={{ borderColor: 'white' }}
+                                                onClick={() => { addProduto(produto); }}
+                                            >+</Button>
+                                        </Col>
+                                        <Col xs={6}>
+                                            <Button
+                                                variant='outline-warning'
+                                                style={{ borderColor: 'white' }}
+                                                onClick={() => { lessProduto(produto); }}
+                                            >-</Button>
+                                        </Col>
+                                    </Row>
                                 </td>
                             </tr>
                         })}
